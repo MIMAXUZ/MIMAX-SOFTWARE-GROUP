@@ -1,5 +1,11 @@
 @extends('admin.layout.app')
 
+@section('styles')
+  <link href="{{asset('/admin/vendor/sweetalert2/dist/sweetalert2.min.css')}}" rel="stylesheet">  
+  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet"> 
+@endsection
+
+
 @section('content')
 
     <div class="card" id="card-title-1">
@@ -22,14 +28,29 @@
                     <tbody>
                         @foreach($team_members as $team)
                             <tr>
-                                <td>{{$team->full_name}}</td>
-                                <td>{{$team->job}}</td>
+                                <td>{{$team->member_full_name}}</td>
+                                <td>{{$team->member_job_uz}}</td>
                                 <td>
                                     <span class=" me-3">
-                                        <img src="{{asset('/admin/images/profile/small/pic11.jpg')}}" alt="" width="50" class="rounded-3 img-history">
+                                        <img src="{{$team->image_member}}" alt="" width="50" class="rounded-3 img-history">
                                     </span>
                                 </td>
-                                <td><span class="btn btn-outline-success btn-sm">Pending</span></td>
+                                <td>
+                                    <form action="{{ asset('/admin/team/isactive/' . $team->id) }}"
+                                        method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="sweetalert">
+                                            <button type="button"   class=" @if ($team->is_active == 1) btn-success @endif  @if ($team->is_active == 0) btn-danger @endif btn sweet-confirm btn-sm">
+                                                @if ($team->is_active == 1)
+                                                    Faol
+                                                @endif
+                                                @if ($team->is_active == 0)
+                                                    Faol emas
+                                                @endif
+                                            </button>
+                                        </div>
+                                    </form>
+                                </td>
                                 <td>
                                     <div class="dropdown">
                                         <a href="javascript:void(0);" class="btn-link btn sharp tp-btn-light btn-primary pill" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,19 +61,27 @@
                                             </svg>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Edit</a>
+                                            <form action="{{route('team-delete_member', $team->id)}}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                @method('DELETE')
+                                              <button class="dropdown-item sweetalert2">Delete</button>
+                                            </form>
+                                            <a class="dropdown-item" href="{{route('team-edit_member', $team->id)}}">Edit</a>
                                         </div>
                                     </div>
                                 </td> 
                             </tr>	
-                        @endforeach
-                        					
+                        @endforeach				
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
- 
+@endsection
+
+@section('scripts')
+ <script src="{{asset('/admin/vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
+ <script src="{{asset('//cdn.jsdelivr.net/npm/sweetalert2@11')}}"></script>
+ <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 @endsection

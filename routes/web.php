@@ -37,10 +37,10 @@ Route::prefix('/')->group(function(){
         Route::get('/team/', 'index_member')->name('team-member-index');
         Route::get('/team/create', 'create_member')->name('team-member-create');
         Route::post('/team/create', 'store_member')->name('team-store_member');
-        // Route::get('/team/edit/{id}', 'edit')->name('u-edit');
+        Route::get('/team/edit/{id}', 'edit_member')->name('team-edit_member');
         // Route::put('/user/edit', 'update')->name('u-update');
-        // Route::delete('/user/delete/{id}', 'delete')->name('u-delete');
-        // Route::post('/user/isactive/{id}', 'is_active');
+        Route::delete('/team/delete/{id}', 'delete_member')->name('team-delete_member');
+        Route::post('/team/isactive/{id}', 'is_active');
 
     });
 

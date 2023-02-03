@@ -21,6 +21,8 @@
 	<link href="{{asset('/admin/vendor/jquery-nice-select/css/nice-select.css')}}" rel="stylesheet">
 	<link href="{{asset('/admin/vendor/jquery-autocomplete/jquery-ui.css')}}" rel="stylesheet">
     <link href="{{asset('/admin/css/style.css')}}" rel="stylesheet">
+
+	@yield('styles')
 	
 </head>
 <body>
@@ -242,7 +244,55 @@
         <!--**********************************
             Content body end
         ***********************************-->
-		
+		<script>
+				"use strict";
+				jQuery(function () {
+				$(".sweet-confirm").click(function (e) {
+					e.preventDefault();
+					let form = $(this).parents("form");
+					Swal.fire({
+						title: "Siz ushbu ma`lumotni statusini o`zgartirmoqchimisiz?",
+						showDenyButton: true,
+						icon: "warning",
+						confirmButtonText: "Yes!",
+						cancelButtonText: "No",
+					}).then((result) => {
+						if (result.isConfirmed) {
+							Swal.fire({
+								icon: "success",
+								title: "Your work has been changed",
+								showConfirmButton: false,
+							});
+							setTimeout(() => {
+								form.submit();
+							}, 1001);
+						}
+					});
+				});
+				$(".sweetalert2").click(function (e) {
+					e.preventDefault();
+					let form = $(this).parents("form");
+					Swal.fire({
+						title: "Siz ushbu ma`lumotni  o`zgartirmoqchimisiz?",
+						showDenyButton: true,
+						icon: "warning",
+						confirmButtonText: "Yes!",
+						cancelButtonText: "No",
+					}).then((result) => {
+						if (result.isConfirmed) {
+							Swal.fire({
+								icon: "success",
+								title: "Your work has been changed",
+								showConfirmButton: false,
+							});
+							setTimeout(() => {
+								form.submit();
+							}, 1001);
+						}
+					});
+				});
+			});
+		</script>
 		
         
 
@@ -269,23 +319,10 @@
 	<script src="{{asset('/admin/vendor/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
 	<script src="{{asset('/admin/vendor/jquery-autocomplete/jquery-ui.js')}}"></script> 
     <script src="{{asset('/admin/js/custom.min.js')}}"></script>
+	@yield('styles')
 	<script src="{{asset('/admin/js/dlabnav-init.js')}}"></script>
 	<script src="{{asset('/admin/js/demo.js')}}"></script>
     <script src="{{asset('/admin/js/styleSwitcher.js')}}"></script>
-
-	{{-- <script src="{{asset('/admin/js/highlight.min.js')}}"></script>
-	<script>hljs.highlightAll();</script>
-   <script>
-	   window.addEventListener("scroll",function(){
-	   var header = document.querySelector(".header");
-	   header.classList.toggle("sticky", window.scrollY > 50 );
-   });	
-
-	   window.addEventListener("scroll",function(){
-	   var header = document.querySelector(".demo-right");
-	   header.classList.toggle("sticky", window.scrollY > 100 );
-   }); --}}
-	
 
 </body>
 </html>

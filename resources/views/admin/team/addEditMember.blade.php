@@ -5,6 +5,7 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Team Member </h4>
+                <a href="{{route('team-member-index')}}"><button type="button" class="btn btn-success">Back</button></a>
             </div>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="DefaultTab" role="tabpanel" aria-labelledby="home-tab">
@@ -36,7 +37,8 @@
                                                     <span class="text-danger">*</span>
                                                 </label>
                                                 <div class="col-lg-6">
-                                                    <input type="file" name="image_member" class="form-control" id="image_member"  placeholder="Enter a Image Memeber.." required>
+                                                    <img src="{{isset($team_members->image_member) ? $team_members->image_member : ""}}" alt="" width="50" class="rounded-3 img-history">
+                                                    <input type="file" name="image_member" class="form-control" id="image_member"  placeholder="Enter a Image Memeber.." value="{{isset($team_members->image_member) ? $team_members->image_member : "" }}" required>
                                                     <div class="invalid-feedback">
                                                         Please enter a Image Memeber.
                                                     </div>
@@ -47,7 +49,7 @@
                                                     <span class="text-danger">*</span>
                                                 </label>
                                                 <div class="col-lg-6">
-                                                    <input type="text" name="member_full_name" class="form-control" id="member_full_name"  placeholder="Enter a Member Full Name.." required>
+                                                    <input type="text" name="member_full_name" class="form-control" id="member_full_name"  placeholder="Enter a Member Full Name.." value="{{ isset($team_members->member_full_name) ? $team_members->member_full_name : "" }}" required>
                                                     <div class="invalid-feedback">
                                                         Please enter a Member Full Name.
                                                     </div>
@@ -62,7 +64,7 @@
                                                     <span class="text-danger">*</span>
                                                 </label>
                                                 <div class="col-lg-6">
-                                                    <input type="text" name="member_job_uz" class="form-control" id="member_job_uz"  placeholder="Enter a Member Job Uz.." required>
+                                                    <input type="text" name="member_job_uz" class="form-control" id="member_job_uz"  placeholder="Enter a Member Job Uz.." value="{{ isset($team_members->member_job_uz) ? $team_members->member_job_uz : "" }}" required>
                                                     <div class="invalid-feedback">
                                                         Please enter a Member Job Uz.
                                                     </div>
@@ -73,7 +75,7 @@
                                                     <span class="text-danger">*</span>
                                                 </label>
                                                 <div class="col-lg-6">
-                                                    <input type="text" name="member_job_ru" class="form-control" id="member_job_ru"  placeholder="Enter a Member Job Ru.." required>
+                                                    <input type="text" name="member_job_ru" class="form-control" id="member_job_ru"  placeholder="Enter a Member Job Ru.." value="{{ isset($team_members->member_job_ru) ? $team_members->member_job_ru : "" }}" required>
                                                     <div class="invalid-feedback">
                                                         Please enter a Member Job Ru.
                                                     </div>
@@ -84,7 +86,7 @@
                                                     <span class="text-danger">*</span>
                                                 </label>
                                                 <div class="col-lg-6">
-                                                    <input type="text" name="member_job_en" class="form-control" id="member_job_en"  placeholder="Enter a Member Job En.." required>
+                                                    <input type="text" name="member_job_en" class="form-control" id="member_job_en"  placeholder="Enter a Member Job En.." value="{{ isset($team_members->member_job_en) ? $team_members->member_job_en : "" }}" required>
                                                     <div class="invalid-feedback">
                                                         Please enter a Member Job En.
                                                     </div>
@@ -99,7 +101,7 @@
                                                     <span class="text-danger">*</span>
                                                 </label>
                                                 <div class="col-lg-6">
-                                                    <input type="text" name="facebook_url" class="form-control" id="facebook_url"  placeholder="Enter a Facebook url.." required>
+                                                    <input type="text" name="facebook_url" class="form-control" id="facebook_url"  placeholder="Enter a Facebook url.." value="{{ isset($team_members->facebook_url) ? $team_members->facebook_url : "" }}" required>
                                                     <div class="invalid-feedback">
                                                         Please enter a Facebook Url.
                                                     </div>
@@ -110,7 +112,7 @@
                                                     <span class="text-danger">*</span>
                                                 </label>
                                                 <div class="col-lg-6">
-                                                    <input type="text" name="twitter_url" class="form-control" id="twitter_url"  placeholder="Enter a Twitter url.." required>
+                                                    <input type="text" name="twitter_url" class="form-control" id="twitter_url"  placeholder="Enter a Twitter url.." value="{{ isset($team_members->twitter_url) ? $team_members->twitter_url : "" }}" required>
                                                     <div class="invalid-feedback">
                                                         Please enter a Twitter Url.
                                                     </div>
@@ -121,7 +123,7 @@
                                                     <span class="text-danger">*</span>
                                                 </label>
                                                 <div class="col-lg-6">
-                                                    <input type="text" name="linkedin_url" class="form-control" id="linkedin_url"  placeholder="Enter a Linkedin url.." required>
+                                                    <input type="text" name="linkedin_url" class="form-control" id="linkedin_url"  placeholder="Enter a Linkedin url.." value="{{ isset($team_members->linkedin_url) ? $team_members->linkedin_url : "" }}" required>
                                                     <div class="invalid-feedback">
                                                         Please enter a Linkedin Url.
                                                     </div>
@@ -132,7 +134,7 @@
                                                     <span class="text-danger">*</span>
                                                 </label>
                                                 <div class="col-lg-6">
-                                                    <input type="text" name="instagram_url" class="form-control" id="instagram_url"  placeholder="Enter a Instagram url.." required>
+                                                    <input type="text" name="instagram_url" class="form-control" id="instagram_url"  placeholder="Enter a Instagram url.." value="{{ isset($team_members->instagram_url) ? $team_members->instagram_url : "" }}" required>
                                                     <div class="invalid-feedback">
                                                         Please enter a Instagram Url.
                                                     </div>

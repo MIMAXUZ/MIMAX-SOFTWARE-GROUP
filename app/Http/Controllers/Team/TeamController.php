@@ -16,6 +16,18 @@ class TeamController extends Controller
         return view('admin.team.index', compact('team_members'));
     }
 
+    public function is_active($id)
+    {
+        $update = Team::find($id);
+        if($update->is_active == 1){
+            $update->is_active = 0;
+        }else{
+            $update->is_active = 1;
+        }
+        $update->save();
+        return redirect()->back();
+    }
+
     public function create_member()
     {
         $team_members = Team::get();
@@ -73,10 +85,18 @@ class TeamController extends Controller
         }
     }
 
-    // public function edit_member($id)
-    // {
-    //     $team_members = Team::get();
-    //     return view('admin.team.addEditMember', compact('team_members'));
-    // }
+    public function edit_member($id)
+    {
+        $team_members = Team::findOrFail($id);
+        return view('admin.team.addEditMember', compact('team_members'));
+    }
+
+    public function delete_member($id)
+    {
+        $team_members = Team::findOrFail($id);
+        $team_members->delete();
+        \Session::flash('warning', __('ALL_SUCCESSFUL_DELETED'));
+        return redirect()->back();
+    }
 
 }
