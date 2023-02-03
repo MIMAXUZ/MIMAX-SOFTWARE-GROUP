@@ -19,11 +19,7 @@ class TeamController extends Controller
     public function is_active($id)
     {
         $update = Team::find($id);
-        if($update->is_active == 1){
-            $update->is_active = 0;
-        }else{
-            $update->is_active = 1;
-        }
+        $update->is_active = $update->is_active == 1 ? 0 : 1;
         $update->save();
         return redirect()->back();
     }
